@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class AddFormComponent implements OnInit {
   public addUserForm!: FormGroup;
   public isUpdate: boolean = false;
+  public users: any[] = [];
 
   constructor(private _fb: FormBuilder) { }
 
@@ -67,8 +68,35 @@ export class AddFormComponent implements OnInit {
   }
 
   addUpdateUser() {
-    console.log('coming into function');
-    console.log(this.addUserForm.value)
+    console.log('coming into function to add/Update user details');
+    const password = this.password.value;
+    if(password == this.confirmPassword.value) {
+      if(this.isUpdate) {
+
+      } else {
+        this.users.push(this.addUserForm.value);
+        this.addUserForm.reset();
+      }
+    } else {
+      alert('Password mismatch');
+      this.confirmPassword.reset();
+    }
+    console.log(this.users);
+    console.log(this.users.length);
+  }
+
+  resetForm() {
+    this.addUserForm.reset();
+    this.isUpdate = false;
+  }
+
+  getDetails(userDetails: any){
+    this.isUpdate = true;
+    this.addUserForm.patchValue(userDetails);
+  }
+
+  deleteUser(user: any) {
+    console.log('coming inside function');
   }
 
 }

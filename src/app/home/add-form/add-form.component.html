@@ -41,9 +41,9 @@
                         <span>
                             <h4>Gender:</h4>
                             <input type="radio" id="male" formControlName = "gender" name="gender" value="male">
-                        <label for="male">Male</label><br>
-                        <input type="radio" id="female" formControlName = "gender" name="gender" value="female">
-                        <label for="female">Female</label><br>
+                            <label for="male">Male</label><br>
+                            <input type="radio" id="female" formControlName = "gender" name="gender" value="female">
+                            <label for="female">Female</label><br>
                         </span>
                     </div>
                     <div>
@@ -65,10 +65,43 @@
                         </span>
                     </div>
                 <div>
-                    <button type="submit">{{isUpdate ? 'Update' : 'Add'}}</button>
-                    <button type="button">Cancel</button>
+                    <button type="submit" [disabled]="!addUserForm.valid">{{isUpdate ? 'Update' : 'Add'}}</button>
+                    <button type="button" (click) ="resetForm()">Cancel</button>
                 </div>
             </form>
+        </div>
+        <hr width="95%" />
+        <div *ngIf="users.length > 0">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users;let i = index;">
+                    <td>{{i + 1}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.dob}}</td>
+                    <td>
+                        <button type="button" (click) = "getDetails(user)">Edit</button>
+                    </td>
+                    <td>
+                        <button type="button" (click) = "deleteUser(user)">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
         </div>
     </div>
         

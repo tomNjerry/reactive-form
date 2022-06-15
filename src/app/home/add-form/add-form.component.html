@@ -1,11 +1,74 @@
-<div>
+
     <!-- Form starts -->
     <div>
         <div>
             <h2>Reactive Form Example</h2>
         </div>
         <div>
-            
+            <form [formGroup]="addUserForm" (submit)="addUpdateUser()">
+                <div>
+                    <span>
+                        <h4>First Name :</h4>
+                        <input type="text" formControlName = "firstName" name="firstName" />
+                    </span>
+                </div>
+                
+                    <div>
+                        <span>
+                            <h4>Last Name :</h4>
+                            <input type="text" formControlName = "lastName" name="lastName" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Email:</h4>
+                            <input type="email" formControlName = "email" name="email" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Phone:</h4>
+                            <input type="text" formControlName = "phone" name="phone" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Company:</h4>
+                            <input type="text" formControlName = "company" name="company" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Gender:</h4>
+                            <input type="radio" id="male" formControlName = "gender" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" formControlName = "gender" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>DOB:</h4>
+                            <input type="date" formControlName = "dob" name="dob" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Password :</h4>
+                            <input type="password" formControlName = "password" name="password" />
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <h4>Confirm Password :</h4>
+                            <input type="password" formControlName = "confirmPassword" name="confirmPassword" />
+                        </span>
+                    </div>
+                <div>
+                    <button type="submit">{{isUpdate ? 'Update' : 'Add'}}</button>
+                    <button type="button">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+        
